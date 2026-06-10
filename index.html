@@ -1,0 +1,61 @@
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="icon" href="favicon.ico" />
+        <link rel="stylesheet" href="style.css">
+        <title>shamper</title>
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@600&display=swap" rel="stylesheet">
+    </head>
+    <body>
+        <!-- <div class="backgroundGradient">
+            <div class="bgCircle bgCircle1"></div>
+            <div class="bgCircle bgCircle2"></div>
+            <div class="bgCircle bgCircle3"></div>
+            <div class="bgCircle bgCircle4"></div>
+            <div class="bgCircle bgCircle5"></div>
+        </div> -->
+        <canvas id="matrix"></canvas>
+        <div id="cursor"></div>
+        <!-- <a href="https://t.me" style="color: white; text-decoration: underline; font-size: 5em">тегешка</a> -->
+        
+    <div class="app">
+
+    <div class="tabs">
+        <div class="tab" data-tab="about">Обо мне</div>
+        <div class="tab" data-tab="projects">Проекты</div>
+        <div class="tab" data-tab="prikols">Приколы</div>
+        <div class="tab" data-tab="log">Ченджлог</div>
+    </div>
+
+    <div class="window" id="window"></div>
+        </div>
+
+    </div>
+    <p class="made-with-love" data-text="made with love by shamper">made with love by shamper</p>
+    </body>
+    <!-- <script src="js/avatar.js"></script> -->
+    <script src="js/cursor.js"></script>
+    <script src="js/dash.js"></script>
+    <script src="js/last-update.js"></script>
+    <script src="js/page_renderer.js"></script>
+    <script src="js/navigation.js"></script>
+    <script src="js/matrix.js"></script>
+    <script src="js/clock.js"></script>
+    <script src="js/weather.js"></script>
+    <script>
+        const title = document.querySelector(".made-with-love");
+
+        title.addEventListener("mousemove", (e) => {
+            const rect = title.getBoundingClientRect();
+
+            const x = ((e.clientX - rect.left) / rect.width) * 100;
+            const y = ((e.clientY - rect.top) / rect.height) * 100;
+
+            title.style.setProperty("--x", `${x}%`);
+            title.style.setProperty("--y", `${y}%`);
+        });
+    </script>
+</html>
