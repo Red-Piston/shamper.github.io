@@ -559,6 +559,11 @@ a, button, input, textarea, select {
 .local-info {
     width: 100%;
     margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
 }
 
 .local-info-top,
@@ -569,14 +574,14 @@ a, button, input, textarea, select {
 }
 
 .local-info-top {
-    font-size: 1.3em;
+    font-size: 1.8em;
     font-weight: 600;
 }
 
 .local-info-bottom {
-    margin-top: 4px;
+    margin-top: 0px;
     color: #aaa;
-    font-size: 0.9em;
+    font-size: 1em;
 }
 
 .weather-inline {
