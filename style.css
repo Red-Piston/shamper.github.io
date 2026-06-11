@@ -600,3 +600,135 @@ a, button, input, textarea, select {
     width: 24px;
     height: 24px;
 }
+
+
+
+/* портфолио */
+.portfolio-title {
+    font-size: 2em;
+    margin-top: 20px;
+    margin-left: 20px;
+    margin-bottom: 0;
+}
+
+.portfolio-subtitle {
+    margin-top: 0;
+    margin-left: 20px;
+    font-size: 1em;
+    color: #aaa;
+}
+
+
+
+/* приколы */
+.prikols-title {
+    font-size: 2em;
+    margin-top: 20px;
+    margin-left: 20px;
+    margin-bottom: 0;
+}
+
+.prikols-subtitle {
+    margin-top: 0;
+    margin-left: 20px;
+    font-size: 1em;
+    color: #aaa;
+}
+
+
+
+/* ченджлог */
+.log-title {
+    font-size: 2em;
+    margin-top: 20px;
+    margin-left: 20px;
+    margin-bottom: 0;
+}
+
+.log-subtitle {
+    margin-top: 0;
+    margin-left: 20px;
+    font-size: 1em;
+    color: #aaa;
+}
+
+.log-container {
+    border-radius: 20px;
+
+    background: rgba(255,255,255,0.05);
+    backdrop-filter: blur(10px);
+
+    border: 1px solid rgba(255,255,255,0.1);
+    margin: 20px;
+    margin-bottom: 10px;
+}
+
+.log-container.latest {
+    box-shadow: 0 0 15px #ddd;
+    margin-bottom: 10px !important;
+}
+
+.log-container-title {
+    font-size: 1.7em;
+    margin-top: 10px;
+    margin-left: 10px;
+    margin-bottom: 0;
+}
+
+.log-version {
+    margin: 0;
+    font-size: 1em;
+    color: #aaa;
+}
+
+.log-container-change {
+    font-size: 1em;
+    margin-top: 3px;
+    margin-left: 20px;
+    margin-bottom: 0;
+    color: #b1b1b1;
+}
+
+.log-container-date {
+    font-size: 0.8em;
+    color: #aaa;
+    text-align: right;
+    margin-right: 10px;
+    margin-bottom: 10px;
+}
+
+.log-repo-link {
+    display: inline-block;
+    text-align: center;
+    font-size: 1.2em;
+    color: #ddd;
+    position: relative;   
+}
+
+.log-repo-link::after {
+    content: attr(data-text);
+
+    position: absolute;
+    inset: 0;
+
+    background: radial-gradient(
+        circle at var(--x, 50%) var(--y, 50%),
+        #a771da,
+        #ffa8c2
+    );
+
+    background-clip: text;
+    -webkit-background-clip: text;
+
+    color: transparent;
+    -webkit-text-fill-color: transparent;
+
+    opacity: 0;
+    transition: opacity 0.4s ease;
+
+    pointer-events: none;
+}
+
+.log-repo-link:hover::after {
+    opacity: 1;
+}

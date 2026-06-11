@@ -10,7 +10,10 @@ fetch("content.html")
         const parser = new DOMParser();
         contentDoc = parser.parseFromString(html, "text/html");
 
-        navigate("about"); // стартовая вкладка
+        const params = new URLSearchParams(window.location.search);
+        const startTab = params.get("tab") || "about";
+
+        navigate(startTab);
     });
 
 function render(tab) {
@@ -45,11 +48,13 @@ function render(tab) {
 
     if (tab === "about") {
         // initClock();
-        initWeather();
+        // initWeather();
     }
 }
 
 function navigate(tab) {
+    console.log("navigate:", tab);
+
     render(tab);
 
     tabs.forEach(t => {

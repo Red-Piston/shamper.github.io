@@ -8,6 +8,13 @@
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@600&display=swap" rel="stylesheet">
+        <link rel="icon"
+            href="assets/favicon-light.svg"
+            media="(prefers-color-scheme: light)">
+
+        <link rel="icon"
+            href="assets/favicon-dark.svg"
+            media="(prefers-color-scheme: dark)">
     </head>
     <body>
         <!-- <div class="backgroundGradient">
@@ -56,6 +63,21 @@
 
             title.style.setProperty("--x", `${x}%`);
             title.style.setProperty("--y", `${y}%`);
+        });
+    </script>
+    <script>
+        document.addEventListener("mousemove", (e) => {
+            const link = e.target.closest(".log-repo-link");
+
+            if (!link) return;
+
+            const rect = link.getBoundingClientRect();
+
+            const x = ((e.clientX - rect.left) / rect.width) * 100;
+            const y = ((e.clientY - rect.top) / rect.height) * 100;
+
+            link.style.setProperty("--x", `${x}%`);
+            link.style.setProperty("--y", `${y}%`);
         });
     </script>
     <script>
