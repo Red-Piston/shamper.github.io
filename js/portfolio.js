@@ -16,6 +16,7 @@ function getTotalPages() {
 
 function renderPagination() {
     const el = document.getElementById("portfolio-pagination");
+
     if (!el) return;
 
     const total = getTotalPages();
@@ -26,20 +27,30 @@ function renderPagination() {
         const btn = document.createElement("button");
 
         btn.className = "page-btn";
+        btn.textContent = i;
 
         if (i === currentPage) {
             btn.classList.add("active");
         }
 
-        btn.textContent = i;
-
         btn.addEventListener("click", () => {
+
+            if (currentPage === i) return;
+
             currentPage = i;
+
+            updatePagination();
             renderProjects();
         });
 
         el.appendChild(btn);
     }
+}
+
+function updatePagination() {
+    document.querySelectorAll(".page-btn").forEach((btn, index) => {
+        btn.classList.toggle("active", index + 1 === currentPage);
+    });
 }
 
 const reachLabels = {
@@ -114,15 +125,11 @@ function createCard(project) {
                 </div>
 
                 <div>
-                    <span class="project-role">
-                        ${project.role || ""}
-                    </span>
+                    <div class="project-reach">
+                        ${formatReach(project.reach)}
+                    </div>
                 </div>
             </div>
-        </div>
-
-        <div class="project-reach">
-            ${formatReach(project.reach)}
         </div>
 
         <div class="project-footer">
@@ -144,20 +151,28 @@ function renderProjects() {
 
     if (!grid) return;
 
-    const projects = getProjectsArray();
+    grid.classList.add("hide");
 
-    const start = (currentPage - 1) * PROJECTS_PER_PAGE;
-    const end = start + PROJECTS_PER_PAGE;
+    setTimeout(() => {
 
-    const pageItems = projects.slice(start, end);
+        const projects = getProjectsArray();
 
-    grid.innerHTML = "";
+        const start = (currentPage - 1) * PROJECTS_PER_PAGE;
+        const end = start + PROJECTS_PER_PAGE;
 
-    pageItems.forEach(project => {
-        grid.appendChild(createCard(project));
-    });
+        const pageItems = projects.slice(start, end);
 
-    renderPagination();
+        grid.innerHTML = "";
+
+        pageItems.forEach(project => {
+            grid.appendChild(createCard(project));
+        });
+
+        renderPagination();
+
+        grid.classList.remove("hide");
+
+    }, 200);
 }
 
 document.addEventListener("click", (e) => {

@@ -175,7 +175,6 @@ function openModal(id) {
                     <div style="display: flex; align-items: center; flex-direction: row;">
                         <h1>${project.title}</h1><type>${project.type}</type>
                     </div>
-                    <role>${project.role || ""}</role>
                     <reach>${formatReach(project.reach)}</reach>
                 </div>
             </div>

@@ -71,6 +71,14 @@
     <script src="js/navigation.js"></script>
     <script src="js/js-yaml.min.js"></script>
     <script>
+        function isMobile() {
+        if (window.innerWidth < 769) {
+            return true;
+        }
+        return false;
+        }
+    </script>
+    <script>
         const title = document.querySelector(".made-with-love");
 
         title.addEventListener("mousemove", (e) => {
