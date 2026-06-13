@@ -41,7 +41,7 @@ team:
     avatar: assets/projects/avatars/tormya.jpg
     role: Бетатестер
   - name: Skippy
-    avatar: assets/projects/avatars/Skippy.jpg
+    avatar: assets/projects/avatars/skippy.jpg
     role: Бетатестер
 
 gallery:
