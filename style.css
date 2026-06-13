@@ -1526,9 +1526,9 @@ a, button, input, textarea, select {
         zoom: 0.4;
     }
 
-    /* #matrix {
+    #matrix {
         display: none !important;
-    } */
+    }
 
     #cursor {
         display: none !important;
