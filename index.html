@@ -7,7 +7,7 @@
 
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@600&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@700&display=swap" rel="stylesheet">
         
         <meta property="og:type" content="website">
         <meta property="og:title" content="shamper website">
@@ -54,12 +54,52 @@
         </div>
 
     </div>
+    
+
+
+    <!-- аудиоплеер -->
+    <div class="player">
+        <audio id="audio"></audio>
+        <div style="display: flex; flex-direction: row;">
+            <img id="trackCover" src="assets/player/covers/unknown-track.png" alt="Cover">
+
+            <div style="display: flex; flex-direction: column; width: 100%; margin-left: 10px;">
+                <span class="player-textTitle" id="trackTitle">Название</span><br>
+                <span class="player-author fade-in" id="trackAuthor">Автор</span><br>
+
+                <input class="track-time-slider" type="range" id="seekSlider" min="0" max="100" value="0" step="1">
+
+                <div id="player-div">
+                    <span id="currentTime">00:00</span>
+                    <span id="duration">00:00</span>
+                </div>
+
+            </div>
+        </div>
+
+        <div style="width: 100%; display: flex; flex-direction: row; align-items: center; justify-content: center; margin: 0;">
+            <button id="prevTrack" class="player-button"><img src="assets/player/skip_previous.svg"></button>
+            <button id="playPause" class="player-button playPause"><img id="playPauseIcon" src="assets/player/play_arrow.svg"></button>
+            <button id="nextTrack" class="player-button"><img src="assets/player/skip_next.svg"></button>
+        </div>
+
+        <div style="width: 100%; display: flex; align-items: center; justify-content: center;">
+            <input class="player-input" type="range" id="volume" min="0" max="1" value="0.50" step="0.01" style="width: 40%;"><br>
+        </div>
+
+    </div>
+
+
+
     <div id="modal" class="modal">
         <div class="modal-content"></div>
     </div>
+
     <p class="made-with-love" data-text="made with love by shamper">made with love by shamper</p>
+
     </body>
     <script src="js/cursor.js"></script>
+    <script src="js/audioplayer.js"></script>
     <script src="js/dash.js"></script>
     <script src="js/last-update.js" defer></script>
     <script src="js/page_renderer.js"></script>
@@ -70,6 +110,11 @@
     <script src="js/portfolio.js"></script>
     <script src="js/navigation.js"></script>
     <script src="js/js-yaml.min.js"></script>
+    <script>
+        window.addEventListener('load', () => {
+        document.querySelector('.player').classList.add('show');
+        });
+    </script>
     <script>
         function isMobile() {
         if (window.innerWidth < 769) {
