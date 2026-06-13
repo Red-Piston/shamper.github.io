@@ -37,9 +37,21 @@
         }
     }
 
-    setInterval(draw, 33);
-
-    window.addEventListener("resize", () => {
+    function resetMatrix() {
         canvas.width = window.innerWidth;
         canvas.height = window.innerHeight;
-    });
+
+        const columns = Math.floor(canvas.width / fontSize);
+
+        drops.length = 0;
+
+        for (let i = 0; i < columns; i++) {
+            drops[i] = 1;
+        }
+    }
+
+    resetMatrix();
+
+    setInterval(draw, 33);
+
+    window.addEventListener("resize", resetMatrix);
