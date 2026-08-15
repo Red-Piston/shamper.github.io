@@ -1,0 +1,14 @@
+id: color-picker
+title: Color Picker
+type: Графика
+role: Инструмент
+icon: assets/utils/color-picker/icon.png
+description: "Продвинутый инструмент выбора цвета в стиле Google Color Picker с поддержкой HEX, RGB, HSL, HSV, CMYK и быстрым копированием"
+component: color-picker
+tags:
+  - HEX
+  - RGB
+  - HSL
+  - HSV
+  - CMYK
+status: Готово

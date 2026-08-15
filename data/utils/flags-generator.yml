@@ -1,0 +1,14 @@
+id: flags-generator
+title: Генератор флагов
+type: Minecraft
+role: Инструмент
+icon: assets/utils/flags-generator/icon.png
+description: "Генератор скриптов запуска (.bat/.sh) и оптимизированных флагов Java (Aikar, MeowIce, ZGC) для серверов Minecraft"
+component: flags-generator
+tags:
+  - Minecraft
+  - Java
+  - Флаги
+  - Оптимизация
+  - Стартер
+status: Готово

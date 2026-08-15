@@ -26,7 +26,7 @@
         document.addEventListener("mouseover", (e) => {
             if (
                 e.target.closest(
-                    "a, button, .card, input, .tab, .avatar-wrapper, .social-bttn, .dash, .project-card"
+                    "a, button, .card, input, textarea, .tab, .avatar-wrapper, .social-bttn, .dash, .project-card, .util-card, .cp-preset-color, .mc-sample-btn, .custom-dropdown-trigger, .custom-dropdown-option"
                 )
             ) {
                 cursor.classList.add("hover");
@@ -36,7 +36,7 @@
         document.addEventListener("mouseout", (e) => {
             if (
                 e.target.closest(
-                    "a, button, .card, input, .tab, .avatar-wrapper, .social-bttn, .dash, .project-card"
+                    "a, button, .card, input, textarea, .tab, .avatar-wrapper, .social-bttn, .dash, .project-card, .util-card, .cp-preset-color, .mc-sample-btn, .custom-dropdown-trigger, .custom-dropdown-option"
                 )
             ) {
                 cursor.classList.remove("hover");

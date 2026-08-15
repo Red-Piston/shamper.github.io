@@ -5,7 +5,7 @@ icon: assets/social-icons/youtube.png
 
 reach:
   - type: count
-    value: 5
+    value: 7
 
 description: "Все превьюшки для видео и стримов на YouTube которые я делал"
 
@@ -15,5 +15,14 @@ gallery:
   - assets/projects/previews/img3.jpg
   - assets/projects/previews/img4.png
   - assets/projects/previews/img5.jpg
+  - assets/projects/previews/img6.png
+  - assets/projects/previews/img7.jpg
+
+history:
+  - date: "О моей работе над превьюшками"
+    text: "Все превьюшки прикреплённые здесь я делал бесплатно чисто по своему желанию, я не продаю превьюшки и не делаю их на заказ. Но если вам всё же понравилось - отпишите мне в тележке, ссылка прикреплена к моему портфолио с превьюшками"
+
+links:
+  Telegram: https://t.me/camper_crafting
 
 # status: Изредка выпускаются видео

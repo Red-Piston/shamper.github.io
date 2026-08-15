@@ -1,0 +1,13 @@
+id: server-pinger
+title: Пинг Сервера
+type: Minecraft
+role: Инструмент
+icon: assets/utils/server-pinger/icon.png
+description: "Получение информации о сервере Minecraft по IP: статус сети, онлайн игроков, MOTD, версия и иконка"
+component: server-pinger
+tags:
+  - Minecraft
+  - API
+  - Мониторинг
+  - Статус
+status: Готово

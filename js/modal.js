@@ -163,6 +163,8 @@ function openModal(id) {
     const project = projectsMap.get(id);
     if (!project) return;
 
+    modalContent?.classList.remove("wide");
+
     modalContent.innerHTML = `
         ${renderLinks(project.links)}
         <div class="modal-header ${project.id}">
@@ -197,5 +199,6 @@ function openModal(id) {
 modal?.addEventListener("click", (e) => {
     if (e.target === modal) {
         modal.classList.remove("open");
+        modalContent?.classList.remove("wide");
     }
 });

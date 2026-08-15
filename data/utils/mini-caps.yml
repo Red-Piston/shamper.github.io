@@ -1,0 +1,12 @@
+id: mini-caps
+title: Mini Caps Generator
+type: Текст
+role: Инструмент
+icon: assets/utils/mini-caps/icon.png
+description: "Генератор маленьких заглавных букв (Small Caps / Mini Caps) для никнеймов, постов в Telegram, Discord и соцсетей"
+component: mini-caps
+tags:
+  - Unicode
+  - Шрифты
+  - Текст
+status: Готово

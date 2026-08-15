@@ -46,7 +46,7 @@
     <div class="tabs">
         <div class="tab" data-tab="about">Обо мне</div>
         <div class="tab" data-tab="portfolio">Портфолио</div>
-        <div class="tab" data-tab="prikols">Приколы</div>
+        <div class="tab" data-tab="utils">Утилиты</div>
         <div class="tab" data-tab="log">Ченджлог</div>
     </div>
 
@@ -95,10 +95,15 @@
         <div class="modal-content"></div>
     </div>
 
+    <div id="toast" class="toast">
+        <span id="toastText">Скопировано</span>
+    </div>
+
     <p class="made-with-love" data-text="made with love by shamper">made with love by shamper</p>
 
     </body>
     <script src="js/cursor.js"></script>
+    <script src="js/js-yaml.min.js"></script>
     <script src="js/audioplayer.js"></script>
     <script src="js/dash.js"></script>
     <script src="js/last-update.js" defer></script>
@@ -106,10 +111,10 @@
     <script src="js/matrix.js"></script>
     <script src="js/clock.js" defer></script>
     <script src="js/projects.js"></script>
+    <script src="js/utils.js"></script>
     <script src="js/modal.js"></script>
     <script src="js/portfolio.js"></script>
     <script src="js/navigation.js"></script>
-    <script src="js/js-yaml.min.js"></script>
     <script>
         window.addEventListener('load', () => {
         document.querySelector('.player').classList.add('show');

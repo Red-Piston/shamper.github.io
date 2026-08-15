@@ -40,6 +40,18 @@ const tracks = [
       title: "Thelema (Slowed)",
       author: "Øfdream",
       cover: "track7.jpg"
+    },
+    { 
+      file: "track8.flac",
+      title: "Code Red",
+      author: "Darci",
+      cover: "track8.jpg"
+    },
+    { 
+      file: "track9.flac",
+      title: "Sum Of All Fears",
+      author: "Matt Darey, Tiff Lacey",
+      cover: "track9.jpg"
     }
 ]
 
@@ -77,12 +89,28 @@ function getCurrentTrack(){
   return tracks[currentTrackIndex];
 }
 
-function startPlayback() {
+let playbackStarted = false;
+
+function startPlayback(e) {
+  if (playbackStarted) return;
+  // If page was opened directly with a utility and modal is open, delay playback until modal closes
+  if (window.openedViaDirectUtil) {
+    return;
+  }
+  playbackStarted = true;
   loadTrack(true);
   audioElement.play().catch(console.error);
 }
 
-document.addEventListener('click', startPlayback, { once: true });
+window.startDelayedPlayback = function() {
+  if (!playbackStarted) {
+    playbackStarted = true;
+    loadTrack(true);
+    audioElement.play().catch(console.error);
+  }
+};
+
+document.addEventListener('click', startPlayback);
 
 function updateTrackInfo(){
   const track = getCurrentTrack();
