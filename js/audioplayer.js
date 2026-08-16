@@ -93,6 +93,9 @@ let playbackStarted = false;
 
 function startPlayback(e) {
   if (playbackStarted) return;
+  const settings = window.getSiteSettings ? window.getSiteSettings() : { autoplay: true, player: true };
+  if (!settings.autoplay || !settings.player) return;
+
   // If page was opened directly with a utility and modal is open, delay playback until modal closes
   if (window.openedViaDirectUtil) {
     return;
@@ -103,6 +106,9 @@ function startPlayback(e) {
 }
 
 window.startDelayedPlayback = function() {
+  const settings = window.getSiteSettings ? window.getSiteSettings() : { autoplay: true, player: true };
+  if (!settings.autoplay || !settings.player) return;
+
   if (!playbackStarted) {
     playbackStarted = true;
     loadTrack(true);
@@ -327,7 +333,7 @@ function updateMediaSession(track) {
     : Math.floor(Math.random() * tracks.length);
 
   const track = getCurrentTrack();
-      loadTrack(true);
+  loadTrack(false);
 
 function getNextTrackIndex(forward = true) {
     let newIndex = currentTrackIndex;

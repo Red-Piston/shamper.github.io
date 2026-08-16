@@ -4,11 +4,17 @@
 }
 
 html {
+    width: 100%;
+    min-height: 100vh;
     cursor: none !important;
     isolation: isolate !important;
 }
 
 body {
+    width: 100%;
+    min-height: 100vh;
+    margin: 0;
+    padding: 0;
     display: flex;
     cursor: none !important;
     isolation: isolate !important;
@@ -2855,7 +2861,241 @@ a, button, input, textarea, select {
     user-select: text;
 }
 
+/* ==========================================
+   SITE MICRO-SETTINGS STYLES
+   ========================================== */
+
+/* Custom Cursor Modes */
+html:not(.system-cursor-active),
+html:not(.system-cursor-active) *,
+body:not(.system-cursor-active),
+body:not(.system-cursor-active) * {
+    cursor: none !important;
+}
+
+#cursor.disabled-cursor {
+    display: none !important;
+}
+
+html.system-cursor-active #cursor,
+body.system-cursor-active #cursor {
+    display: none !important;
+}
+
+html.system-cursor-active,
+html.system-cursor-active *,
+body.system-cursor-active,
+body.system-cursor-active * {
+    cursor: auto !important;
+}
+
+html.system-cursor-active a,
+html.system-cursor-active button,
+html.system-cursor-active .tab,
+html.system-cursor-active .card,
+html.system-cursor-active .project-card,
+html.system-cursor-active .util-card,
+html.system-cursor-active .custom-dropdown-trigger,
+html.system-cursor-active .custom-dropdown-option,
+html.system-cursor-active .switch,
+html.system-cursor-active .slider-toggle,
+html.system-cursor-active .settings-floating-btn,
+html.system-cursor-active .social-bttn,
+html.system-cursor-active .cp-preset-color,
+html.system-cursor-active .mc-sample-btn,
+html.system-cursor-active input[type="range"],
+html.system-cursor-active input[type="checkbox"],
+body.system-cursor-active a,
+body.system-cursor-active button,
+body.system-cursor-active .tab,
+body.system-cursor-active .card,
+body.system-cursor-active .project-card,
+body.system-cursor-active .util-card,
+body.system-cursor-active .custom-dropdown-trigger,
+body.system-cursor-active .custom-dropdown-option,
+body.system-cursor-active .switch,
+body.system-cursor-active .slider-toggle,
+body.system-cursor-active .settings-floating-btn,
+body.system-cursor-active .social-bttn,
+body.system-cursor-active .cp-preset-color,
+body.system-cursor-active .mc-sample-btn,
+body.system-cursor-active input[type="range"],
+body.system-cursor-active input[type="checkbox"] {
+    cursor: pointer !important;
+}
+
+html.purple-gradient-bg,
+body.purple-gradient-bg {
+    background: radial-gradient(circle at 50% 50%, #220835 0%, #0e0216 55%, #000000 100%) !important;
+    background-attachment: fixed !important;
+}
+
+html.purple-gradient-bg #matrix,
+body.purple-gradient-bg #matrix {
+    opacity: 0 !important;
+    pointer-events: none !important;
+    display: none !important;
+}
+
+.player.hidden-player {
+    display: none !important;
+}
+
+.settings-floating-btn {
+    position: fixed;
+    bottom: 24px;
+    right: 24px;
+    z-index: 990;
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    background: black;
+    border: 2px solid rgba(255, 255, 255, 0.15);
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: background-color 0.2s ease, border-color 0.2s ease;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.6);
+}
+
+.settings-floating-btn:hover {
+    background-color: rgb(70, 69, 69);
+    border-color: rgba(255, 255, 255, 0.4);
+}
+
+.settings-modal-icon {
+    width: 48px;
+    height: 48px;
+    border-radius: 14px;
+    background: #0d0d0d;
+    border: 2px solid rgba(255, 255, 255, 0.1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #a771da;
+    flex-shrink: 0;
+}
+
+.settings-list {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    padding: 20px;
+}
+
+.settings-card {
+    background: #0d0d0d;
+    border: 2px solid rgba(255, 255, 255, 0.1);
+    border-radius: 14px;
+    padding: 16px 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    transition: border-color 0.2s ease;
+}
+
+.settings-card-info {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.settings-card-title {
+    font-size: 1.05em;
+    font-weight: 700;
+    color: #fff;
+}
+
+.settings-card-desc {
+    font-size: 0.84em;
+    color: #888;
+    line-height: 1.4;
+    margin: 0;
+}
+
+.settings-warning-box {
+    background: rgba(255, 255, 255, 0.03);
+    border: 1.5px solid rgba(255, 255, 255, 0.1);
+    border-radius: 12px;
+    padding: 12px 16px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-size: 0.85em;
+    color: #aaa;
+    line-height: 1.4;
+    margin-top: 4px;
+}
+
+.settings-warning-icon {
+    color: #fbc531;
+    flex-shrink: 0;
+}
+
+/* Custom Toggle Switch */
+.switch {
+    position: relative;
+    display: inline-block;
+    width: 48px;
+    height: 26px;
+    flex-shrink: 0;
+}
+
+.switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.slider-toggle {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #222;
+    border: 2px solid rgba(255, 255, 255, 0.15);
+    transition: 0.25s ease;
+    border-radius: 26px;
+}
+
+.slider-toggle:before {
+    position: absolute;
+    content: "";
+    height: 16px;
+    width: 16px;
+    left: 3px;
+    bottom: 3px;
+    background-color: #fff;
+    transition: 0.25s ease;
+    border-radius: 50%;
+}
+
+input:checked + .slider-toggle {
+    background-color: #a771da;
+    border-color: #a771da;
+}
+
+input:checked + .slider-toggle:before {
+    transform: translateX(22px);
+    background-color: #fff;
+}
+
 @media (max-width: 768px) {
+    .settings-floating-btn {
+        bottom: 16px;
+        right: 16px;
+        width: 44px;
+        height: 44px;
+    }
+
+    .settings-card {
+        padding: 14px 16px;
+    }
     #utils-grid {
         grid-template-columns: 1fr;
         margin: 10px;

@@ -26,7 +26,7 @@
         document.addEventListener("mouseover", (e) => {
             if (
                 e.target.closest(
-                    "a, button, .card, input, textarea, .tab, .avatar-wrapper, .social-bttn, .dash, .project-card, .util-card, .cp-preset-color, .mc-sample-btn, .custom-dropdown-trigger, .custom-dropdown-option"
+                    "a, button, .card, input, textarea, .tab, .avatar-wrapper, .social-bttn, .dash, .project-card, .util-card, .cp-preset-color, .mc-sample-btn, .custom-dropdown-trigger, .custom-dropdown-option, .switch, .slider-toggle, .settings-floating-btn"
                 )
             ) {
                 cursor.classList.add("hover");
@@ -36,7 +36,7 @@
         document.addEventListener("mouseout", (e) => {
             if (
                 e.target.closest(
-                    "a, button, .card, input, textarea, .tab, .avatar-wrapper, .social-bttn, .dash, .project-card, .util-card, .cp-preset-color, .mc-sample-btn, .custom-dropdown-trigger, .custom-dropdown-option"
+                    "a, button, .card, input, textarea, .tab, .avatar-wrapper, .social-bttn, .dash, .project-card, .util-card, .cp-preset-color, .mc-sample-btn, .custom-dropdown-trigger, .custom-dropdown-option, .switch, .slider-toggle, .settings-floating-btn"
                 )
             ) {
                 cursor.classList.remove("hover");
