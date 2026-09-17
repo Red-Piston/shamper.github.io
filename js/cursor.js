@@ -26,7 +26,7 @@
         document.addEventListener("mouseover", (e) => {
             if (
                 e.target.closest(
-                    "a, button, .card, input, textarea, .tab, .avatar-wrapper, .social-bttn, .dash, .project-card, .util-card, .cp-preset-color, .mc-sample-btn, .custom-dropdown-trigger, .custom-dropdown-option, .switch, .slider-toggle, .settings-floating-btn"
+                    "a, button, .card, input, textarea, select, .tab, .avatar-wrapper, .social-bttn, .dash, .project-card, .util-card, .cp-preset-color, .mc-sample-btn, .custom-dropdown-trigger, .custom-dropdown-option, .switch, .slider-toggle, .settings-floating-btn, .tr-dict-item, .qr-upload-btn, .qr-checkbox-label, .qr-color-swatch-box, .qr-color-preset-dot, .qr-native-color-btn"
                 )
             ) {
                 cursor.classList.add("hover");
@@ -36,7 +36,7 @@
         document.addEventListener("mouseout", (e) => {
             if (
                 e.target.closest(
-                    "a, button, .card, input, textarea, .tab, .avatar-wrapper, .social-bttn, .dash, .project-card, .util-card, .cp-preset-color, .mc-sample-btn, .custom-dropdown-trigger, .custom-dropdown-option, .switch, .slider-toggle, .settings-floating-btn"
+                    "a, button, .card, input, textarea, select, .tab, .avatar-wrapper, .social-bttn, .dash, .project-card, .util-card, .cp-preset-color, .mc-sample-btn, .custom-dropdown-trigger, .custom-dropdown-option, .switch, .slider-toggle, .settings-floating-btn, .tr-dict-item, .qr-upload-btn, .qr-checkbox-label, .qr-color-swatch-box, .qr-color-preset-dot, .qr-native-color-btn"
                 )
             ) {
                 cursor.classList.remove("hover");

@@ -122,8 +122,16 @@ function updateTrackInfo(){
   const track = getCurrentTrack();
   trackTitleSpan.textContent = track.title;
   trackAuthorSpan.textContent = track.author || '';
-  trackCover.src = track.cover ? `assets/player/covers/${track.cover}` : 'assets/player/covers/unknown-track.png';
+  const coverSrc = track.cover ? `assets/player/covers/${track.cover}` : 'assets/player/covers/unknown-track.png';
+  trackCover.src = coverSrc;
 
+  // Sync with mobile now bar
+  const nowBarTitle = document.getElementById('nowBarTitle');
+  const nowBarAuthor = document.getElementById('nowBarAuthor');
+  const nowBarCover = document.getElementById('nowBarCover');
+  if (nowBarTitle) nowBarTitle.textContent = track.title;
+  if (nowBarAuthor) nowBarAuthor.textContent = track.author || '';
+  if (nowBarCover) nowBarCover.src = coverSrc;
 }
 
 // ===== CORE =====
@@ -211,10 +219,43 @@ audioElement.addEventListener('ended', () => {
 
 audioElement.addEventListener('play', () => {
   playPauseIcon.src = 'assets/player/pause.svg';
+  const nowBarIcon = document.getElementById('nowBarPlayPauseIcon');
+  if (nowBarIcon) nowBarIcon.src = 'assets/player/pause.svg';
+  document.getElementById('mobileNowBar')?.classList.add('playing');
   initVisualizer();
 });
 
-audioElement.addEventListener('pause',()=>playPauseIcon.src='assets/player/play_arrow.svg');
+audioElement.addEventListener('pause', () => {
+  playPauseIcon.src = 'assets/player/play_arrow.svg';
+  const nowBarIcon = document.getElementById('nowBarPlayPauseIcon');
+  if (nowBarIcon) nowBarIcon.src = 'assets/player/play_arrow.svg';
+  document.getElementById('mobileNowBar')?.classList.remove('playing');
+});
+
+// ===== MOBILE NOW BAR EXPAND / COLLAPSE =====
+const mobileNowBar = document.getElementById('mobileNowBar');
+const nowBarPlayPauseBtn = document.getElementById('nowBarPlayPauseBtn');
+const playerCloseBtn = document.getElementById('playerCloseBtn');
+const playerBackdrop = document.getElementById('playerBackdrop');
+
+mobileNowBar?.addEventListener('click', (e) => {
+  if (e.target.closest('#nowBarPlayPauseBtn')) return;
+  document.body.classList.toggle('player-expanded');
+});
+
+nowBarPlayPauseBtn?.addEventListener('click', (e) => {
+  e.stopPropagation();
+  if (audioElement.paused) audioElement.play().catch(console.error);
+  else audioElement.pause();
+});
+
+playerCloseBtn?.addEventListener('click', () => {
+  document.body.classList.remove('player-expanded');
+});
+
+playerBackdrop?.addEventListener('click', () => {
+  document.body.classList.remove('player-expanded');
+});
 
 // ===== CONTROLS =====
 playPauseBtn.addEventListener('click',()=>{

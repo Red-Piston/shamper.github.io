@@ -1,0 +1,4 @@
+id: ai-translator
+title: AI Переводчик
+description: Интеллектуальный перевод предложений и текстов с сохранением контекста, смысла и оттенков речи на базе нейросетей (DeepSeek, ChatGPT, Claude, Gemini)
+icon: assets/utils/ai-translator/icon.png

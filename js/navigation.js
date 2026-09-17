@@ -21,7 +21,7 @@ if (initialUtil) {
 }
 
 // загружаем HTML один раз
-fetch("content.html")
+fetch("content.html?v=" + Date.now(), { cache: "no-cache" })
     .then(res => res.text())
     .then(html => {
         const parser = new DOMParser();
@@ -34,6 +34,7 @@ fetch("content.html")
     });
 
 function render(tab) {
+    if (!contentDoc) return;
     const section = contentDoc.getElementById(tab);
 
     if (!section) return;
@@ -51,6 +52,8 @@ function render(tab) {
             initPortfolio();
         } else if (tab === "utils") {
             initUtilsTab();
+        } else if (tab === "about") {
+            if (typeof updateClock === "function") updateClock();
         }
     }, 200);
 
@@ -69,6 +72,8 @@ function navigate(tab) {
     if (tab !== "utils" || !pendingDirectUtilId) {
         history.replaceState({}, "", `?tab=${tab}`);
     }
+
+    window.scrollTo({ top: 0, behavior: "smooth" });
 }
 
 tabs.forEach(tab => {
@@ -87,6 +92,19 @@ document.addEventListener("click", (e) => {
     setTimeout(() => {
         avatar.classList.remove("avatar-rotating");
     }, 1000);
+});
+
+document.addEventListener("click", (e) => {
+    const wipBtn = e.target.closest("#wipToggleAnywayBtn");
+    if (wipBtn) {
+        const wipCard = document.querySelector(".utils-mobile-wip");
+        if (wipCard) {
+            wipCard.classList.toggle("show-anyway");
+            wipBtn.textContent = wipCard.classList.contains("show-anyway") 
+                ? "Скрыть утилиты" 
+                : "Показать всё равно";
+        }
+    }
 });
 
 async function initPortfolio() {

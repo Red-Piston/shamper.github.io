@@ -111,34 +111,37 @@ function createCard(project) {
     el.className = `project-card ${project.id}`;
     el.dataset.id = project.id;
 
+    const reachText = formatReach(project.reach);
+    const reachHtml = reachText ? `<div class="project-reach">${reachText}</div>` : "";
+    const linksHtml = createLinks(project);
+
     el.innerHTML = `
         <div class="project-header">
             <img
                 class="project-icon"
                 src="${project.icon || 'assets/default.avif'}"
+                alt="${project.title}"
+                loading="lazy"
             >
 
-            <div style="display:flex; flex-direction:column">
+            <div class="project-header-text">
                 <div class="project-info">
                     <h3>${project.title}</h3>
                     <span class="project-type">${project.type}</span>
                 </div>
 
-                <div>
-                    <div class="project-reach">
-                        ${formatReach(project.reach)}
-                    </div>
-                </div>
+                ${reachHtml}
             </div>
         </div>
 
         <div class="project-footer">
-            <div class="project-links">
-                ${createLinks(project)}
-            </div>
+            ${linksHtml ? `<div class="project-links">${linksHtml}</div>` : ""}
 
-            <button class="project-more">
-                Подробнее
+            <button class="project-more" type="button">
+                <span>Подробнее</span>
+                <svg class="project-more-arrow" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                    <polyline points="9 18 15 12 9 6"></polyline>
+                </svg>
             </button>
         </div>
     `;
