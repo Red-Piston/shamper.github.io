@@ -12,7 +12,7 @@ team:
     role: Владелец, разработчик
     url: https://shamper.ru/
   - name: pansangg
-    avatar: assets/projects/avatars/pansangg.png
+    avatar: https://pansangg.su/avatar.png
     role: Разработчик
     url: https://pansangg.su
 
