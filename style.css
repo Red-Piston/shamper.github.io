@@ -1404,13 +1404,10 @@ select {
 
 .modal-links {
     position: absolute;
-
-    top: 20px;
-    right: 20px;
-
+    top: 14px;
+    right: 58px;
     display: flex;
     gap: 8px;
-
     z-index: 5;
 }
 
@@ -1508,9 +1505,37 @@ select {
     /* backdrop-filter: blur(10px); */
 
     border: 2px solid rgba(255, 255, 255, 0.1);
+    position: relative;
 
     transform: scale(0.95);
     transition: transform 0.25s ease;
+}
+
+.modal-close-btn {
+    position: absolute;
+    top: 14px;
+    right: 14px;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    background: rgba(30, 30, 30, 0.88);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1.5px solid rgba(255, 255, 255, 0.18);
+    color: #ffffff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    z-index: 1000;
+    transition: background-color 0.2s ease, transform 0.2s ease, border-color 0.2s ease;
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.6);
+}
+
+.modal-close-btn:hover {
+    background: rgba(60, 60, 60, 0.95);
+    border-color: rgba(255, 255, 255, 0.35);
+    transform: scale(1.08);
 }
 
 #modal.open .modal-content {
@@ -4552,7 +4577,7 @@ body.purple-gradient-bg #matrix {
     display: flex;
     flex-direction: column;
     gap: 12px;
-    padding: 20px;
+    padding: 50px 20px 20px 20px;
 }
 
 .settings-card {
@@ -4724,50 +4749,42 @@ input:checked+.slider-toggle:before {
 @media (max-width: 768px) {
     html {
         width: 100%;
-        overflow-x: hidden;
+        height: 100%;
+        overflow: hidden !important;
     }
 
     body {
         width: 100%;
-        min-height: 100vh;
-        height: auto;
-        overflow-x: hidden;
-        overflow-y: auto;
+        height: 100dvh !important;
+        min-height: 100dvh !important;
+        overflow: hidden !important;
         display: flex !important;
         flex-direction: column !important;
         align-items: center !important;
-        justify-content: flex-start !important;
+        justify-content: center !important;
         padding: 0 !important;
         margin: 0 !important;
         background: black;
     }
 
-    /* 1. TOP: AUDIO PLAYER */
-    #audioPlayer {
-        order: 1 !important;
-    }
-
+    /* 1. TOP: FIXED AUDIO PLAYER (фиксирован сверху поверх) */
     .player.player-capsule {
+        position: fixed !important;
+        top: calc(10px + env(safe-area-inset-top, 0px)) !important;
+        left: 50% !important;
+        transform: translateX(-50%) !important;
         width: calc(100% - 24px) !important;
         max-width: 440px !important;
         z-index: 10005 !important;
+        margin: 0 !important;
     }
 
     .player.player-capsule:not(.expanded) {
-        position: relative !important;
-        top: auto !important;
-        left: auto !important;
-        transform: none !important;
-        margin: calc(12px + env(safe-area-inset-top, 0px)) auto 12px auto !important;
         height: 48px !important;
         border-radius: 24px !important;
     }
 
     .player.player-capsule.expanded {
-        position: fixed !important;
-        top: calc(12px + env(safe-area-inset-top, 0px)) !important;
-        left: 50% !important;
-        transform: translateX(-50%) !important;
         height: 235px !important;
         border-radius: 18px !important;
     }
@@ -4813,45 +4830,49 @@ input:checked+.slider-toggle:before {
         height: 40px !important;
     }
 
-    /* 2. MIDDLE: APP & CONTENT WINDOW */
+    /* 2. MIDDLE: SCROLLABLE CONTENT WINDOW (листаемое окно ровно между плеером и навбаром) */
     .app {
-        order: 2 !important;
         width: 100% !important;
-        max-width: 520px;
-        position: relative !important;
-        top: auto !important;
-        left: auto !important;
-        transform: none !important;
-        padding: 0 14px calc(24px + env(safe-area-inset-bottom, 0px)) 14px !important;
-        box-sizing: border-box;
+        max-width: 520px !important;
+        height: 100dvh !important;
+        max-height: 100dvh !important;
+        position: fixed !important;
+        top: 0 !important;
+        left: 50% !important;
+        transform: translateX(-50%) !important;
+        padding-top: calc(66px + env(safe-area-inset-top, 0px)) !important;
+        padding-bottom: calc(86px + env(safe-area-inset-bottom, 0px)) !important;
+        padding-left: 14px !important;
+        padding-right: 14px !important;
+        box-sizing: border-box !important;
         min-height: auto !important;
-        display: flex;
-        flex-direction: column;
+        display: flex !important;
+        flex-direction: column !important;
         align-items: center !important;
+        justify-content: flex-start !important;
+        z-index: 10 !important;
     }
 
     .settings-card {
         padding: 14px 16px !important;
     }
 
-    /* 3. BOTTOM: BOTTOM-BAR (NAVBAR & SETTINGS STRICTLY BELOW WINDOW) */
+    /* 3. BOTTOM: FIXED NAVBAR & SETTINGS (фиксированы снизу поверх) */
     .bottom-bar {
-        position: relative !important;
-        top: auto !important;
-        left: auto !important;
-        right: auto !important;
-        bottom: auto !important;
-        width: 100% !important;
+        position: fixed !important;
+        bottom: calc(12px + env(safe-area-inset-bottom, 0px)) !important;
+        left: 50% !important;
+        transform: translateX(-50%) !important;
+        width: auto !important;
         height: auto !important;
         display: flex !important;
         flex-direction: row !important;
         align-items: center !important;
         justify-content: center !important;
         gap: 12px !important;
-        margin-top: 16px !important;
-        margin-bottom: calc(16px + env(safe-area-inset-bottom, 0px)) !important;
         pointer-events: auto !important;
-        z-index: 50 !important;
+        z-index: 10005 !important;
+        margin: 0 !important;
     }
 
     .navbar,
@@ -4862,7 +4883,6 @@ input:checked+.slider-toggle:before {
         bottom: auto !important;
         transform: none !important;
         width: auto !important;
-        z-index: 1 !important;
         margin: 0 !important;
         display: flex !important;
         align-items: center !important;
@@ -4879,12 +4899,14 @@ input:checked+.slider-toggle:before {
         width: 62px !important;
         height: 62px !important;
         border-radius: 50% !important;
-        z-index: 1 !important;
         background: #141414 !important;
         border: 2px solid rgba(255, 255, 255, 0.15) !important;
         box-shadow: 0 4px 16px rgba(0, 0, 0, 0.7) !important;
         flex-shrink: 0 !important;
         margin: 0 !important;
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
     }
 
     .nav-capsule {
@@ -4936,16 +4958,21 @@ input:checked+.slider-toggle:before {
         display: none !important;
     }
 
-    /* Window Container */
+    /* Window Container (листаемое окно между верхним плеером и нижним навбаром) */
     .window {
         width: 100% !important;
+        height: 100% !important;
+        max-height: 100% !important;
+        overflow-y: auto !important;
+        overflow-x: hidden !important;
+        -webkit-overflow-scrolling: touch !important;
         border-radius: 24px !important;
         border: 2px solid rgba(255, 255, 255, 0.1) !important;
+        background: black !important;
         margin: 0 !important;
         box-sizing: border-box !important;
-        max-height: none !important;
-        height: auto !important;
-        overflow: visible !important;
+        scrollbar-width: thin !important;
+        scrollbar-color: rgba(255, 255, 255, 0.18) transparent !important;
     }
 
     /* About Section */
@@ -4954,6 +4981,8 @@ input:checked+.slider-toggle:before {
         flex-direction: column !important;
         align-items: center !important;
         width: 100% !important;
+        height: auto !important;
+        min-height: 100% !important;
     }
 
     .about-content-first {
@@ -5004,7 +5033,7 @@ input:checked+.slider-toggle:before {
 
     .about-content-second {
         width: 100% !important;
-        padding: 10px 16px 18px 16px !important;
+        padding: 10px 16px 28px 16px !important;
         box-sizing: border-box !important;
         text-align: left !important;
     }
@@ -5297,6 +5326,25 @@ input:checked+.slider-toggle:before {
         padding: 16px 14px !important;
         margin: 0 !important;
         box-sizing: border-box !important;
+        position: relative !important;
+    }
+
+    .modal-close-btn {
+        top: 12px !important;
+        right: 12px !important;
+        width: 38px !important;
+        height: 38px !important;
+        background: rgba(36, 36, 36, 0.95) !important;
+        border: 1.5px solid rgba(255, 255, 255, 0.22) !important;
+    }
+
+    .modal-links {
+        top: 12px !important;
+        right: 56px !important;
+    }
+
+    .settings-list {
+        padding: 44px 8px 16px 8px !important;
     }
 
     .modal-content.wide {

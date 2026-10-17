@@ -39,7 +39,7 @@ let renderTimer = null;
 function animateWindowHeight() {
     if (!windowEl) return;
     if (window.innerWidth <= 768) {
-        windowEl.style.height = "auto";
+        windowEl.style.height = "";
         return;
     }
     const startHeight = windowEl.offsetHeight;
@@ -89,6 +89,27 @@ function render(tab) {
             if (typeof updateClock === "function") updateClock();
         }
         updateLastUpdate();
+        return;
+    }
+
+    // На мобилках высота окна управляется через CSS (100% между шапкой и навбаром)
+    if (window.innerWidth <= 768) {
+        windowEl.style.height = "";
+        windowEl.classList.add("hide");
+        renderTimer = setTimeout(() => {
+            windowEl.innerHTML = section.innerHTML;
+            if (tab === "portfolio") {
+                initPortfolio();
+            } else if (tab === "utils") {
+                initUtilsTab();
+            } else if (tab === "about") {
+                if (typeof updateClock === "function") updateClock();
+            }
+            windowEl.classList.remove("hide");
+            windowEl.style.height = "";
+            windowEl.scrollTop = 0;
+            updateLastUpdate();
+        }, 200);
         return;
     }
 
