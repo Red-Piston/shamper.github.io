@@ -8,7 +8,8 @@ const DEFAULT_SETTINGS = {
     matrix: true,
     cursor: true,
     autoplay: true,
-    player: true
+    player: true,
+    coverTheme: true
 };
 
 function getSettings() {
@@ -69,14 +70,22 @@ function applySettings() {
 
     if (settings.player) {
         playerEl?.classList.remove("hidden-player");
-        mobileNowBarEl?.classList.remove("hidden-player");
     } else {
         playerEl?.classList.add("hidden-player");
-        mobileNowBarEl?.classList.add("hidden-player");
+        playerEl?.classList.remove("expanded");
         document.body.classList.remove("player-expanded");
         if (audioEl && !audioEl.paused) {
             audioEl.pause();
         }
+    }
+
+    // 4. Dynamic Cover Theme
+    if (settings.coverTheme === false) {
+        if (typeof window.revertCoverColors === "function") {
+            window.revertCoverColors();
+        }
+    } else if (typeof window.applyCurrentTrackColors === "function") {
+        window.applyCurrentTrackColors();
     }
 }
 
@@ -127,6 +136,7 @@ function openSettingsModal() {
             </div>
 
             <!-- 4. Авто-воспроизведение музыки -->
+            <!-- 4. Авто-воспроизведение музыки -->
             <div class="settings-card" id="settingAutoplayCard" style="display: ${settings.player ? 'flex' : 'none'};">
                 <div class="settings-card-info">
                     <span class="settings-card-title">Авто-воспроизведение музыки</span>
@@ -134,6 +144,18 @@ function openSettingsModal() {
                 </div>
                 <label class="switch">
                     <input type="checkbox" id="settingAutoplayToggle" ${settings.autoplay ? 'checked' : ''}>
+                    <span class="slider-toggle"></span>
+                </label>
+            </div>
+
+            <!-- 5. Тема по обложке трека -->
+            <div class="settings-card" id="settingCoverThemeCard" style="display: ${settings.player ? 'flex' : 'none'};">
+                <div class="settings-card-info">
+                    <span class="settings-card-title">Цвета под трек</span>
+                    <p class="settings-card-desc">Окрашивание фона, имени, обводки аватара, кнопок навбара и ползунка в цвет обложки играющего трека.</p>
+                </div>
+                <label class="switch">
+                    <input type="checkbox" id="settingCoverThemeToggle" ${settings.coverTheme !== false ? 'checked' : ''}>
                     <span class="slider-toggle"></span>
                 </label>
             </div>
@@ -166,6 +188,8 @@ function openSettingsModal() {
     const playerToggle = document.getElementById("settingPlayerToggle");
     const autoplayToggle = document.getElementById("settingAutoplayToggle");
     const autoplayCard = document.getElementById("settingAutoplayCard");
+    const coverThemeToggle = document.getElementById("settingCoverThemeToggle");
+    const coverThemeCard = document.getElementById("settingCoverThemeCard");
 
     matrixToggle?.addEventListener("change", (e) => {
         saveSetting("matrix", e.target.checked);
@@ -181,10 +205,17 @@ function openSettingsModal() {
         if (autoplayCard) {
             autoplayCard.style.display = isEnabled ? "flex" : "none";
         }
+        if (coverThemeCard) {
+            coverThemeCard.style.display = isEnabled ? "flex" : "none";
+        }
     });
 
     autoplayToggle?.addEventListener("change", (e) => {
         saveSetting("autoplay", e.target.checked);
+    });
+
+    coverThemeToggle?.addEventListener("change", (e) => {
+        saveSetting("coverTheme", e.target.checked);
     });
 }
 

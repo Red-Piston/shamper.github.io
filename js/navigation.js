@@ -33,20 +33,72 @@ fetch("content.html?v=" + Date.now(), { cache: "no-cache" })
         navigate(startTab);
     });
 
+let heightTransitionTimer = null;
+let renderTimer = null;
+
+function animateWindowHeight() {
+    if (!windowEl) return;
+    const startHeight = windowEl.offsetHeight;
+    if (startHeight === 0) return;
+
+    windowEl.style.height = "auto";
+    const maxHeight = window.innerHeight * 0.8;
+    const targetHeight = Math.min(windowEl.scrollHeight, maxHeight);
+
+    if (Math.abs(targetHeight - startHeight) < 4) {
+        windowEl.style.height = "";
+        return;
+    }
+
+    windowEl.style.height = `${startHeight}px`;
+    void windowEl.offsetHeight;
+    windowEl.style.height = `${targetHeight}px`;
+
+    if (heightTransitionTimer) clearTimeout(heightTransitionTimer);
+    heightTransitionTimer = setTimeout(() => {
+        windowEl.style.height = "";
+    }, 400);
+}
+
+window.animateWindowHeight = animateWindowHeight;
+
 function render(tab) {
-    if (!contentDoc) return;
+    if (!contentDoc || !windowEl) return;
     const section = contentDoc.getElementById(tab);
 
     if (!section) return;
 
-    // fade out
+    if (renderTimer) {
+        clearTimeout(renderTimer);
+        renderTimer = null;
+    }
+
+    const isFirstLoad = !windowEl.innerHTML.trim();
+
+    if (isFirstLoad) {
+        windowEl.innerHTML = section.innerHTML;
+        if (tab === "portfolio") {
+            initPortfolio();
+        } else if (tab === "utils") {
+            initUtilsTab();
+        } else if (tab === "about") {
+            if (typeof updateClock === "function") updateClock();
+        }
+        updateLastUpdate();
+        return;
+    }
+
+    // Запоминаем текущую высоту окна
+    const startHeight = windowEl.offsetHeight;
+    if (startHeight > 0) {
+        windowEl.style.height = `${startHeight}px`;
+    }
+
+    // Плавно прячем только содержимое (окно остаётся видимым)
     windowEl.classList.add("hide");
 
-    setTimeout(() => {
+    renderTimer = setTimeout(() => {
         windowEl.innerHTML = section.innerHTML;
-
-        // fade in
-        windowEl.classList.remove("hide");
 
         if (tab === "portfolio") {
             initPortfolio();
@@ -55,9 +107,28 @@ function render(tab) {
         } else if (tab === "about") {
             if (typeof updateClock === "function") updateClock();
         }
-    }, 200);
 
-    updateLastUpdate();
+        // Замеряем высоту нового контента
+        windowEl.style.height = "auto";
+        const maxHeight = window.innerHeight * 0.8;
+        const targetHeight = Math.min(windowEl.scrollHeight, maxHeight);
+
+        if (startHeight > 0) {
+            windowEl.style.height = `${startHeight}px`;
+            void windowEl.offsetHeight; // Reflow
+        }
+
+        // Плавно анимируем высоту окна и проявляем новое содержимое
+        windowEl.style.height = `${targetHeight}px`;
+        windowEl.classList.remove("hide");
+
+        if (heightTransitionTimer) clearTimeout(heightTransitionTimer);
+        heightTransitionTimer = setTimeout(() => {
+            windowEl.style.height = "";
+        }, 400);
+
+        updateLastUpdate();
+    }, 200);
 }
 
 function navigate(tab) {

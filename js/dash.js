@@ -3,9 +3,10 @@ document.addEventListener("mouseover", (e) => {
 
     if (!dash) return;
 
-    document.querySelectorAll(".tab").forEach(tab => {
-        tab.classList.add("dash-hover");
-    });
+    const navCapsule = document.querySelector(".nav-capsule");
+    if (navCapsule) {
+        navCapsule.classList.add("dash-hover");
+    }
 });
 
 document.addEventListener("mouseout", (e) => {
@@ -13,7 +14,8 @@ document.addEventListener("mouseout", (e) => {
 
     if (!dash) return;
 
-    document.querySelectorAll(".tab").forEach(tab => {
-        tab.classList.remove("dash-hover");
-    });
+    const navCapsule = document.querySelector(".nav-capsule");
+    if (navCapsule) {
+        navCapsule.classList.remove("dash-hover");
+    }
 });

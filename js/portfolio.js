@@ -174,6 +174,9 @@ function renderProjects() {
         renderPagination();
 
         grid.classList.remove("hide");
+        if (typeof window.animateWindowHeight === "function") {
+            window.animateWindowHeight();
+        }
 
     }, 200);
 }
