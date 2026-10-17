@@ -5,7 +5,7 @@ async function loadProjects() {
 
     const results = await Promise.all(
         files.map(async (f) => {
-            const res = await fetch("data/projects/" + f);
+            const res = await fetch("data/projects/" + f, { cache: "no-cache" });
             const text = await res.text();
             return jsyaml.load(text);
         })

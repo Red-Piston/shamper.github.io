@@ -2,7 +2,10 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="stylesheet" href="style.css">
+        <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+        <meta http-equiv="Pragma" content="no-cache">
+        <meta http-equiv="Expires" content="0">
+        <link rel="stylesheet" href="style.css?v=2.2.2">
         <title>shamper</title>
 
         <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -44,38 +47,40 @@
     <div class="app">
         <div class="window" id="window"></div>
 
-        <nav class="side-navbar navbar" id="navbar" aria-label="Навигация">
-            <div class="nav-capsule">
-                <div class="tab nav-item" data-tab="about">
-                    <svg class="tab-icon nav-icon" viewBox="0 0 24 24" fill="none">
-                        <circle cx="12" cy="6" r="4" fill="currentColor"/>
-                        <path d="M20 17.5C20 19.9853 20 22 12 22C4 22 4 19.9853 4 17.5C4 15.0147 7.58172 13 12 13C16.4183 13 20 15.0147 20 17.5Z" fill="currentColor"/>
-                    </svg>
-                    <span class="nav-tooltip">Обо мне</span>
+        <div class="bottom-bar" id="bottomBar">
+            <nav class="side-navbar navbar" id="navbar" aria-label="Навигация">
+                <div class="nav-capsule">
+                    <div class="tab nav-item" data-tab="about">
+                        <svg class="tab-icon nav-icon" viewBox="0 0 24 24" fill="none">
+                            <circle cx="12" cy="6" r="4" fill="currentColor"/>
+                            <path d="M20 17.5C20 19.9853 20 22 12 22C4 22 4 19.9853 4 17.5C4 15.0147 7.58172 13 12 13C16.4183 13 20 15.0147 20 17.5Z" fill="currentColor"/>
+                        </svg>
+                        <span class="nav-tooltip">Обо мне</span>
+                    </div>
+                    <div class="tab nav-item" data-tab="portfolio">
+                        <svg class="tab-icon nav-icon" viewBox="0 0 24 24" fill="none">
+                            <path d="M20 6h-4V4c0-1.11-.89-2-2-2h-4c-1.11 0-2 .89-2 2v2H4c-1.11 0-1.99.89-1.99 2L2 19c0 1.11.89 2 2 2h16c1.11 0 2-.89 2-2V8c0-1.11-.89-2-2-2zm-6 0h-4V4h4v2z" fill="currentColor"/>
+                        </svg>
+                        <span class="nav-tooltip">Портфолио</span>
+                    </div>
+                    <div class="tab nav-item" data-tab="log">
+                        <svg class="tab-icon nav-icon" viewBox="0 0 24 24" fill="none">
+                            <path fill-rule="evenodd" clip-rule="evenodd" d="M4 5V19C4 20.6569 5.34315 22 7 22H17C18.6569 22 20 20.6569 20 19V9C20 7.34315 18.6569 6 17 6H5C4.44772 6 4 5.55228 4 5ZM7.25 12C7.25 11.5858 7.58579 11.25 8 11.25H16C16.4142 11.25 16.75 11.5858 16.75 12C16.75 12.4142 16.4142 12.75 16 12.75H8C7.58579 12.75 7.25 12.4142 7.25 12ZM7.25 15.5C7.25 15.0858 7.58579 14.75 8 14.75H13.5C13.9142 14.75 14.25 15.0858 14.25 15.5C14.25 15.9142 13.9142 16.25 13.5 16.25H8C7.58579 16.25 7.25 15.9142 7.25 15.5Z" fill="currentColor"/>
+                            <path d="M4.40879 4.0871C4.75727 4.24338 5 4.59334 5 5H17C17.3453 5 17.6804 5.04375 18 5.12602V4.30604C18 3.08894 16.922 2.15402 15.7172 2.32614L4.91959 3.86865C4.72712 3.89615 4.55271 3.97374 4.40879 4.0871Z" fill="currentColor"/>
+                        </svg>
+                        <span class="nav-tooltip">Ченджлог</span>
+                    </div>
                 </div>
-                <div class="tab nav-item" data-tab="portfolio">
-                    <svg class="tab-icon nav-icon" viewBox="0 0 24 24" fill="none">
-                        <path d="M20 6h-4V4c0-1.11-.89-2-2-2h-4c-1.11 0-2 .89-2 2v2H4c-1.11 0-1.99.89-1.99 2L2 19c0 1.11.89 2 2 2h16c1.11 0 2-.89 2-2V8c0-1.11-.89-2-2-2zm-6 0h-4V4h4v2z" fill="currentColor"/>
-                    </svg>
-                    <span class="nav-tooltip">Портфолио</span>
-                </div>
-                <div class="tab nav-item" data-tab="log">
-                    <svg class="tab-icon nav-icon" viewBox="0 0 24 24" fill="none">
-                        <path fill-rule="evenodd" clip-rule="evenodd" d="M4 5V19C4 20.6569 5.34315 22 7 22H17C18.6569 22 20 20.6569 20 19V9C20 7.34315 18.6569 6 17 6H5C4.44772 6 4 5.55228 4 5ZM7.25 12C7.25 11.5858 7.58579 11.25 8 11.25H16C16.4142 11.25 16.75 11.5858 16.75 12C16.75 12.4142 16.4142 12.75 16 12.75H8C7.58579 12.75 7.25 12.4142 7.25 12ZM7.25 15.5C7.25 15.0858 7.58579 14.75 8 14.75H13.5C13.9142 14.75 14.25 15.0858 14.25 15.5C14.25 15.9142 13.9142 16.25 13.5 16.25H8C7.58579 16.25 7.25 15.9142 7.25 15.5Z" fill="currentColor"/>
-                        <path d="M4.40879 4.0871C4.75727 4.24338 5 4.59334 5 5H17C17.3453 5 17.6804 5.04375 18 5.12602V4.30604C18 3.08894 16.922 2.15402 15.7172 2.32614L4.91959 3.86865C4.72712 3.89615 4.55271 3.97374 4.40879 4.0871Z" fill="currentColor"/>
-                    </svg>
-                    <span class="nav-tooltip">Ченджлог</span>
-                </div>
-            </div>
-        </nav>
+            </nav>
 
-        <!-- Кнопка настроек -->
-        <button id="settings-btn" class="settings-floating-btn" aria-label="Настройки" title="Настройки">
-            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <circle cx="12" cy="12" r="3"></circle>
-                <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path>
-            </svg>
-        </button>
+            <!-- Кнопка настроек -->
+            <button id="settings-btn" class="settings-floating-btn" aria-label="Настройки" title="Настройки">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <circle cx="12" cy="12" r="3"></circle>
+                    <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path>
+                </svg>
+            </button>
+        </div>
     </div>
     
 
@@ -174,21 +179,21 @@
     <p class="made-with-love" data-text="made with love by shamper">made with love by shamper</p>
 
     </body>
-    <script src="js/cursor.js"></script>
+    <script src="js/cursor.js?v=2.2.2"></script>
     <script src="js/js-yaml.min.js"></script>
-    <script src="js/settings.js"></script>
-    <script src="js/audioplayer.js"></script>
-    <script src="js/dash.js"></script>
-    <script src="js/last-update.js" defer></script>
-    <script src="js/page_renderer.js"></script>
-    <script src="js/matrix.js"></script>
-    <script src="js/clock.js" defer></script>
-    <script src="js/projects.js"></script>
+    <script src="js/settings.js?v=2.2.2"></script>
+    <script src="js/audioplayer.js?v=2.2.2"></script>
+    <script src="js/dash.js?v=2.2.2"></script>
+    <script src="js/last-update.js?v=2.2.2" defer></script>
+    <script src="js/page_renderer.js?v=2.2.2"></script>
+    <script src="js/matrix.js?v=2.2.2"></script>
+    <script src="js/clock.js?v=2.2.2" defer></script>
+    <script src="js/projects.js?v=2.2.2"></script>
     <script src="js/qrcode.min.js"></script>
-    <script src="js/utils.js"></script>
-    <script src="js/modal.js"></script>
-    <script src="js/portfolio.js"></script>
-    <script src="js/navigation.js"></script>
+    <script src="js/utils.js?v=2.2.2"></script>
+    <script src="js/modal.js?v=2.2.2"></script>
+    <script src="js/portfolio.js?v=2.2.2"></script>
+    <script src="js/navigation.js?v=2.2.2"></script>
     <script>
         document.getElementById('settings-btn')?.addEventListener('click', () => {
             if (typeof openSettingsModal === 'function') {

@@ -9,7 +9,7 @@ async function loadUtils() {
     const results = await Promise.all(
         files.map(async (f) => {
             try {
-                const res = await fetch("data/utils/" + f);
+                const res = await fetch("data/utils/" + f, { cache: "no-cache" });
                 const text = await res.text();
                 return jsyaml.load(text);
             } catch (err) {

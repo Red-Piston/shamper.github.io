@@ -38,6 +38,10 @@ let renderTimer = null;
 
 function animateWindowHeight() {
     if (!windowEl) return;
+    if (window.innerWidth <= 768) {
+        windowEl.style.height = "auto";
+        return;
+    }
     const startHeight = windowEl.offsetHeight;
     if (startHeight === 0) return;
 

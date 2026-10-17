@@ -315,12 +315,29 @@ select {
    BUBBLEMC CAPSULE NAVBAR (DESKTOP)
    ============================================ */
 
-.navbar,
-.side-navbar {
+.bottom-bar {
     position: absolute;
     top: calc(100% + 16px);
-    left: 50%;
-    transform: translateX(-50%);
+    left: 0;
+    width: 100%;
+    height: 66px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    pointer-events: none;
+    z-index: 50;
+}
+
+.bottom-bar > * {
+    pointer-events: auto;
+}
+
+.navbar,
+.side-navbar {
+    position: relative;
+    top: auto;
+    left: auto;
+    transform: none;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -4489,7 +4506,7 @@ body.purple-gradient-bg #matrix {
 
 .settings-floating-btn {
     position: absolute;
-    top: calc(100% + 16px);
+    top: 0;
     right: 0;
     z-index: 50;
     width: 66px;
@@ -4725,39 +4742,32 @@ input:checked+.slider-toggle:before {
         background: black;
     }
 
-    /* App Container */
-    .app {
-        width: 100% !important;
-        max-width: 520px;
-        position: relative !important;
-        top: auto !important;
-        left: auto !important;
-        transform: none !important;
-        padding: calc(76px + env(safe-area-inset-top, 0px)) 14px calc(100px + env(safe-area-inset-bottom, 0px)) 14px !important;
-        box-sizing: border-box;
-        min-height: 100vh;
-        display: flex;
-        flex-direction: column;
+    /* 1. TOP: AUDIO PLAYER */
+    #audioPlayer {
+        order: 1 !important;
     }
 
-    /* ==========================================
-       TOP CAPSULE AUDIO PLAYER (АУДИОПЛЕЕР СВЕРХУ)
-       ========================================== */
     .player.player-capsule {
-        top: calc(12px + env(safe-area-inset-top, 0px)) !important;
-        left: 50% !important;
-        transform: translateX(-50%) !important;
         width: calc(100% - 24px) !important;
-        max-width: 380px !important;
+        max-width: 440px !important;
         z-index: 10005 !important;
     }
 
     .player.player-capsule:not(.expanded) {
+        position: relative !important;
+        top: auto !important;
+        left: auto !important;
+        transform: none !important;
+        margin: calc(12px + env(safe-area-inset-top, 0px)) auto 12px auto !important;
         height: 48px !important;
         border-radius: 24px !important;
     }
 
     .player.player-capsule.expanded {
+        position: fixed !important;
+        top: calc(12px + env(safe-area-inset-top, 0px)) !important;
+        left: 50% !important;
+        transform: translateX(-50%) !important;
         height: 235px !important;
         border-radius: 18px !important;
     }
@@ -4803,43 +4813,78 @@ input:checked+.slider-toggle:before {
         height: 40px !important;
     }
 
-    /* Floating Settings Button */
-    .settings-floating-btn {
-        position: fixed !important;
-        bottom: calc(14px + env(safe-area-inset-bottom, 0px)) !important;
-        right: 16px !important;
+    /* 2. MIDDLE: APP & CONTENT WINDOW */
+    .app {
+        order: 2 !important;
+        width: 100% !important;
+        max-width: 520px;
+        position: relative !important;
         top: auto !important;
         left: auto !important;
         transform: none !important;
-        width: 66px !important;
-        height: 66px !important;
-        border-radius: 50% !important;
-        z-index: 10001 !important;
-        background: #141414 !important;
-        border: 2px solid rgba(255, 255, 255, 0.15) !important;
-        box-shadow: 0 4px 16px rgba(0, 0, 0, 0.7) !important;
+        padding: 0 14px calc(24px + env(safe-area-inset-bottom, 0px)) 14px !important;
+        box-sizing: border-box;
+        min-height: auto !important;
+        display: flex;
+        flex-direction: column;
+        align-items: center !important;
     }
 
     .settings-card {
         padding: 14px 16px !important;
     }
 
-    /* ==========================================
-       BUBBLEMC CAPSULE NAVBAR ON MOBILE (FIXED BOTTOM)
-       ========================================== */
+    /* 3. BOTTOM: BOTTOM-BAR (NAVBAR & SETTINGS STRICTLY BELOW WINDOW) */
+    .bottom-bar {
+        position: relative !important;
+        top: auto !important;
+        left: auto !important;
+        right: auto !important;
+        bottom: auto !important;
+        width: 100% !important;
+        height: auto !important;
+        display: flex !important;
+        flex-direction: row !important;
+        align-items: center !important;
+        justify-content: center !important;
+        gap: 12px !important;
+        margin-top: 16px !important;
+        margin-bottom: calc(16px + env(safe-area-inset-bottom, 0px)) !important;
+        pointer-events: auto !important;
+        z-index: 50 !important;
+    }
+
     .navbar,
     .side-navbar {
-        position: fixed !important;
-        left: 50% !important;
+        position: relative !important;
+        left: auto !important;
         top: auto !important;
-        bottom: calc(14px + env(safe-area-inset-bottom, 0px)) !important;
-        transform: translateX(-50%) !important;
+        bottom: auto !important;
+        transform: none !important;
         width: auto !important;
-        z-index: 1000 !important;
+        z-index: 1 !important;
         margin: 0 !important;
         display: flex !important;
         align-items: center !important;
         justify-content: center !important;
+    }
+
+    .settings-floating-btn {
+        position: relative !important;
+        bottom: auto !important;
+        right: auto !important;
+        top: auto !important;
+        left: auto !important;
+        transform: none !important;
+        width: 62px !important;
+        height: 62px !important;
+        border-radius: 50% !important;
+        z-index: 1 !important;
+        background: #141414 !important;
+        border: 2px solid rgba(255, 255, 255, 0.15) !important;
+        box-shadow: 0 4px 16px rgba(0, 0, 0, 0.7) !important;
+        flex-shrink: 0 !important;
+        margin: 0 !important;
     }
 
     .nav-capsule {
@@ -4898,6 +4943,9 @@ input:checked+.slider-toggle:before {
         border: 2px solid rgba(255, 255, 255, 0.1) !important;
         margin: 0 !important;
         box-sizing: border-box !important;
+        max-height: none !important;
+        height: auto !important;
+        overflow: visible !important;
     }
 
     /* About Section */
